@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="output">
+        Input
+
+    </button>
+    <p id="p1">Hello World!</p>
+
+    <div class="numbers">
+        <button >1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>0</button>
+    </div>
+
+    <div class="operations">
+        <button id="+">+</button>
+        <button id="-">-</button>
+        <button id="*">*</button>
+        <button id="/">/</button>
+
+
+    </div>
+    <div class="eval">
+        <button id="=">=</button>
+
+    </div>
+
+    <div class="clear">
+        <button>Clear</button>
+    </div>
+
+    <script>
+        let x = "";
+        let y = "";
+        let op = "";
+
+        function digit(x, y) {
+            return x + y;
+        }
+
+        function add(x, y) {
+            x=parseFloat(x);
+            y=parseFloat(y);
+            return x + y;
+        }
+
+        function subtract(x, y) {
+            return x - y;
+        }
+
+        function multiply(x, y) {
+            return x * y;
+
+        }
+
+        function divide(x, y) {
+            return x / y;
+
+
+        }
+
+        function operate(x, op, y) {
+            switch (op) {
+                case "":
+                    return digit(x, y);
+                case "+":
+                    
+                    return add(x, y);
+                    break;
+                case "-":
+                    return subtract(x, y);
+                    break;
+                case "*":
+                    return multiply(x, y);
+                    break;
+                case "/":
+                    return divide(x, y);
+                    break;
+
+            }
+            
+
+        }
+
+
+        for (i = 0; i < 10; i++) {
+            let btn = document.createElement("button");
+            btn.innerHTML = i;
+            btn.id = i;
+            document.body.appendChild(btn);
+            
+        //}
+        //btn.onclick = execute();
+        //document.getElementById(i).addEventListener("click",console.log(i));
+        // document.getElementById(i).onclick = function() {execute()};
+       // for (i = 0; i < 10; i++) {
+           console.log("test"+btn.id);
+            document.getElementById(i).onclick = function () { storeX(btn.id) };
+            console.log(i);
+        }
+        // set up operation key functions
+        document.getElementById("+").onclick = function () {execute(); op="+"; document.getElementById("output").innerHTML = x + " " + op; };
+        document.getElementById("-").onclick = function () {execute(); op="-";document.getElementById("output").innerHTML = x + " " + op; };
+        document.getElementById("*").onclick = function () {execute(); op="*";document.getElementById("output").innerHTML = x + " " + op; };
+        document.getElementById("/").onclick = function () {execute(); op="/" ;document.getElementById("output").innerHTML = x + " " + op;};
+        document.getElementById("=").onclick = function () { execute(); op="";y=x;x="" };
+
+            
+        
+
+
+
+            function storeX(value) {
+                y = y+value;
+                document.getElementById("output").innerHTML = x + " " + op + " " + y;
+                console.log("y is " + y + " and x is " + x);
+                
+            }
+
+            let btn = document.createElement("button");
+            btn.innerHTML = "Click Me";
+            btn.id = "testID";
+            document.body.appendChild(btn);
+
+            function execute() {
+                //const output = document.body.getElementById('output');
+                document.getElementById("p1").innerHTML = "New Result: " + operate(x, op, y);
+
+                document.getElementById("output").innerHTML = x + " " + op + " " + y;
+
+                if(op=="/"&& y==0)
+                {
+                    document.getElementById("p1").innerHTML = "Hey!  You can't divide by zero!";
+
+                }
+                else{
+                    x=operate(x, op, y);
+
+                }
+
+                //output.innerHTML = 'hi';
+                console.log(operate(x, op, y));
+
+                
+                
+                y="";
+            }
+        
+
+    </script>
+
+
+</body>
+
+</html>
