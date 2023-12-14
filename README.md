@@ -1,4 +1,3 @@
-# Calculator
+# Calculator Two-Step Equation Tutorial
 
-
-Four Function Calculator.  Allows unlimited operation length with a calculation update with each button press.  
+Tutorial for using a calculator to help solve a two-step algebra equation.
